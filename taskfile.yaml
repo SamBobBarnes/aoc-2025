@@ -1,0 +1,15 @@
+version: '3'
+
+tasks:
+  start:*:
+    vars:
+      day: "{{index .MATCH 0}}"
+    cmds:
+      - mkdir -p "Codyssi2025/Day{{.day}}"
+      - cp "./TemplatePart.txt" "./Day{{.day}}/Part1.cs"
+      - sed -i "s/X/{{.day}}/g" ./Day{{.day}}/Part1.cs
+      - sed -i "s/Y/1/g" ./Day{{.day}}/Part1.cs
+      - cp "./TemplatePart.txt" "./Day{{.day}}/Part2.cs"
+      - sed -i "s/X/{{.day}}/g" ./Day{{.day}}/Part2.cs
+      - sed -i "s/Y/2/g" ./Day{{.day}}/Part2.cs
+      - git add .
