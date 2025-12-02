@@ -30,7 +30,7 @@ public abstract class BasePart
         if (!_test && _inputText != null)
             return _inputText.Replace("\r\n", "\n").Split('\n');
     
-        string filename = $"day{_day,2:D2}_p{_part}";
+        string filename = $"day{_day,2:D2}";
         if (_test)
         {
             filename += "_test";
