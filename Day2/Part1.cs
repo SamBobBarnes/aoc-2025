@@ -60,18 +60,6 @@ public class Part1() : BasePart(2,1)
        return  (long)System.Numerics.BigInteger.Pow(10, exponent);
     }
 
-    private int GetDigitLength(long num)
-    {
-        var exponent = 0;
-        var mod = 0L;
-        while (mod != num)
-        {
-            exponent++;
-            mod = num % (10^exponent);
-        }
-        return exponent;
-    }
-
     private record Range(long Start, long End)
     {
         public bool Contains(long value) => value >= Start && value <= End;
