@@ -8,17 +8,13 @@ public abstract class BasePart
     private readonly int _day;
     private readonly int _part;
     private readonly bool _test;
-    private readonly string? _inputText;
-
-    protected BasePart(string title, int day, int part, string? inputText, bool test = false)
+    protected BasePart(int day, int part, bool test = false)
     {
         _day = day;
         _test = test;
-        _inputText = inputText;
         _part = part;
 
         Console.WriteLine($"Running day {_day} part {part}{(_test ? " example" : "")}");
-        if (!string.IsNullOrEmpty(title)) Console.WriteLine(title);
         // ReSharper disable once VirtualMemberCallInConstructor
         Console.WriteLine();
         var timer = new Stopwatch();
@@ -33,9 +29,6 @@ public abstract class BasePart
 
     protected string[] Input()
     {
-        if (!_test && _inputText != null)
-            return _inputText.Replace("\r\n", "\n").Split('\n');
-    
         string filename = $"day{_day,2:D2}";
         if (_test)
         {
@@ -48,8 +41,6 @@ public abstract class BasePart
 
     protected char[] InputChars()
     {
-        if (!_test && _inputText != null)
-            return _inputText.Replace("\r\n", "\n").ToCharArray();
         string filename = $"day{_day,2:D2}_p{_part}";
         if (_test)
         {
