@@ -10,10 +10,7 @@ public abstract class BasePart
     private readonly bool _test;
     private readonly string? _inputText;
 
-    protected BasePart(int day,int part, bool test = false): this("", day, part,null, test){}
-    protected BasePart(int day,int part, string inputText, bool test = false): this("", day, part, inputText, test){}
-
-    private BasePart(string title, int day, int part, string? inputText, bool test = false)
+    protected BasePart(string title, int day, int part, string? inputText, bool test = false)
     {
         _day = day;
         _test = test;
