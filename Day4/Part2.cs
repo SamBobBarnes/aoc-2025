@@ -10,8 +10,8 @@ public class Part2() : BasePart(4,2)
         var height = input.Length;
 
         var total = 0;
-        var paperRemovedThisRound = true;
-        while (paperRemovedThisRound)
+
+        while (true)
         {
             var localTotal = 0;
             for (int y = 0; y < height; y++)
@@ -37,8 +37,9 @@ public class Part2() : BasePart(4,2)
                     input[y][x] = false;
                 }
             }
+
             if (localTotal == 0)
-                paperRemovedThisRound = false;
+                break;
             total += localTotal;
         }
 
