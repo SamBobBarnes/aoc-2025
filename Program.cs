@@ -1,5 +1,5 @@
 ﻿
-using AOC25.Day6;
+using AOC25.Day7;
 
 new Part1();
 new Part2();

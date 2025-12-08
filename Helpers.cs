@@ -23,4 +23,13 @@ public class Helpers
         }
         return File.ReadAllText(path);
     }
+
+    public class ReverseComparer<T> : IComparer<T> where T : IComparable<T>
+    {
+        public int Compare(T x, T y)
+        {
+            // Reverse the comparison: y.CompareTo(x) instead of x.CompareTo(y)
+            return x.CompareTo(y);
+        }
+    }
 }
