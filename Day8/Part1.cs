@@ -2,14 +2,15 @@ using System.Text;
 
 namespace AOC25.Day8;
 
-public class Part1() : BasePart(8,1)
+public class Part1() : BasePart(8,1,true)
 {
     public override string Run()
     {
         var circuits = Input().Select(x => new Circuit(x)).ToList();
         var pairs = new List<(double Distance, Circuit C)>();
 
-        var limit = 1000;
+        // var limit = 1000;
+        var limit = 10;
         var distanceMinimum = 0d;
 
         for(int t = 0; t < limit; t++)
