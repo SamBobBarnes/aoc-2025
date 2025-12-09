@@ -50,5 +50,16 @@ public abstract class BasePart
         return Helpers.LoadInputFile(filename).Replace("\r\n","\n").ToCharArray();
     }
 
+    protected void WriteOutput(string content)
+    {
+        string filename = $"day{_day,2:D2}_p{_part}";
+        if (_test)
+        {
+            filename += "_test";
+        }
+        filename += "_output.txt";
+        Helpers.WriteOutputFile(filename, content);
+    }
+
     public abstract string Run();
 }

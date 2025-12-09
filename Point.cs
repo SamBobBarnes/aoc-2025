@@ -5,6 +5,8 @@ public class Point(int x, int y)
     public readonly int X = x;
     public readonly int Y = y;
 
+    public Point() : this(0,0) { }
+
     public override bool Equals(object? obj)
     {
         return obj is Point point && X == point.X && Y == point.Y;

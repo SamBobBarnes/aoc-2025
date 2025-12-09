@@ -24,6 +24,17 @@ public class Helpers
         return File.ReadAllText(path);
     }
 
+    public static void WriteOutputFile(string fileName, string content)
+    {
+        string workingDir = Path.Combine(Directory.GetCurrentDirectory(), "../../../Outputs");
+        if (!Directory.Exists(workingDir))
+        {
+            Directory.CreateDirectory(workingDir);
+        }
+        string path = Path.Combine(workingDir, fileName);
+        File.WriteAllText(path, content);
+    }
+
     public class ReverseComparer<T> : IComparer<T> where T : IComparable<T>
     {
         public int Compare(T x, T y)
