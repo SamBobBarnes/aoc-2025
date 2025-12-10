@@ -9,73 +9,92 @@ public class Part2() : BasePart(10,2,true)
         var total = 0;
         foreach(var machine in input)
         {
-            var initialState = new int[machine.GoalSetting.Length];
-            var dictionary = new Dictionary<int[], int>
+            var state = new State("(0,0,0,0,0)");
+            var presses = new int[machine.ButtonWirings.Count];
+            var index = 0;
+            foreach (var button in machine.ButtonWirings)
             {
-                [machine.GoalSetting] = int.MaxValue
-            };
-            var q = new Queue<(int[] state, int presses)>();
-            q.Enqueue((initialState, 0));
-            var visited = new HashSet<int[]>();
-
-            while (q.Count > 0)
-            {
-                var (state, presses) = q.Dequeue();
-                if(!visited.Add(state)) continue;
-
-                if (state == machine.GoalSetting)
+                while(true)
                 {
-                    dictionary[state] = presses;
+                    // Press the button
+                    state += button;
+
+                    presses[index]++;
+
+                    if (!state.ExceedsGoal(machine.GoalSetting)) continue;
+
+                    // Undo the last press
+                    state -= button;
+                    presses[index]--;
                     break;
                 }
-
-                var nextPresses = presses + 1;
-                foreach (var button in machine.ButtonWirings)
-                {
-                    var nextState = state.ToArray();
-                    foreach (var wire in button)
-                    {
-                        nextState[wire]++;
-                    }
-
-                    if(nextState.Select((s, i) => machine.GoalSetting[i] < s).Any(x => x)) continue;
-                    if (dictionary.ContainsKey(nextState) && dictionary[nextState] <= nextPresses) continue;
-
-                    dictionary[nextState] = nextPresses;
-                    q.Enqueue((nextState, nextPresses));
-                }
+                index++;
             }
-            total += dictionary[machine.GoalSetting];
+
+            total += 0;
         }
 
 
         return total.ToString();
     }
 
-    private class Machine
+    private class State(string config)
     {
-        public readonly int[] GoalSetting;
-        public readonly List<int[]> ButtonWirings = [];
-        public Machine(string config)
-        {
-            var parts = config.Split(' ');
+        private readonly int[] _wiring = config.TrimStart('(').TrimEnd(')').Split(',').Select(int.Parse).ToArray();
 
-            GoalSetting = ConfigToIntArray(parts[^1]);
-            foreach (var button in parts[1..^1])
+        public static State operator +(State a, State b)
+        {
+            for (int i = 0; i < a._wiring.Length; i++)
             {
-                ButtonWirings.Add(button.TrimStart('(').TrimEnd(')').Split(',').Select(int.Parse).ToArray());
+                a._wiring[i] += b._wiring[i];
             }
+
+            return a;
         }
 
-        private int[] ConfigToIntArray(string lights)
+        public static State operator -(State a, State b)
         {
-            return lights.TrimStart('{').TrimEnd('}').Split(',').Select(int.Parse).ToArray();
+            for (int i = 0; i < a._wiring.Length; i++)
+            {
+                a._wiring[i] -= b._wiring[i];
+            }
+
+            return a;
         }
 
         public override string ToString()
         {
-            var buttons = ButtonWirings.Select(b => string.Join(",",b));
-            return $"[{string.Join(",",GoalSetting)}]: ({string.Join("),(", buttons)})";
+            return string.Join(",", _wiring);
+        }
+
+        public bool ExceedsGoal(State goal)
+        {
+            for (int i = 0; i < _wiring.Length; i++)
+            {
+                if (_wiring[i] > goal._wiring[i]) return true;
+            }
+            return false;
+        }
+    }
+
+    private class Machine
+    {
+        public readonly State GoalSetting;
+        public readonly List<State> ButtonWirings = [];
+        public Machine(string config)
+        {
+            var parts = config.Split(' ');
+
+            GoalSetting = new State(parts[0].TrimStart('{').TrimEnd('}'));
+            foreach (var button in parts[1..^1])
+            {
+                ButtonWirings.Add(new State(button));
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"[{string.Join(",",GoalSetting)}]: ({string.Join("),(", ButtonWirings)})";
         }
     }
 }
