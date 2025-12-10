@@ -9,8 +9,10 @@ public class Part1() : BasePart(10,1)
         var total = 0;
         foreach(var machine in input)
         {
-            var dictionary = new Dictionary<int, int>();
-            dictionary[machine.GoalSetting] = int.MaxValue;
+            var dictionary = new Dictionary<int, int>
+            {
+                [machine.GoalSetting] = int.MaxValue
+            };
             var q = new Queue<(int state, int presses)>();
             q.Enqueue((0, 0));
 
