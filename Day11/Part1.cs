@@ -14,56 +14,26 @@ public class Part1() : BasePart(11, 1)
         var startNode = input.First(x => x.Name == "you");
         var total = 0;
 
-        var q = new Queue<string>();
-        q.Enqueue(startNode.Name);
-        var visited = new List<string>();
-        while(q.Count > 0)
-        {
-            var current = q.Dequeue();
-            if (visited.Contains(current))
-            {
-                continue;
-            }
-            visited.Add(current);
-            var node = input.First(x => x.Name == current);
-            foreach (var output in node.Outputs)
-            {
-                if (output == "out") continue;
-                q.Enqueue(output);
-            }
-        }
-
-        var reachableNodes = input.Where(x => visited.Contains(x.Name)).ToList();
-
-        var step = reachableNodes.Where(n => n.Outputs.Contains("out")).ToList();
-        while (step.Count > 0)
-        {
-            total += step.Count;
-            var nextStep = new List<Node>();
-            foreach (var node in step)
-            {
-                if(node.Name == "you")
-                {
-                    continue;
-                }
-                var parentQ = new Queue<Node>(reachableNodes.FindAll(n => n.Outputs.Contains(node.Name)));
-                while (parentQ.Count > 0)
-                {
-                    var parent = parentQ.Dequeue();
-                    if (parent.Outputs.Count == 1)
-                    {
-                        foreach(var subParent in reachableNodes.FindAll(n => n.Outputs.Contains(parent.Name)))
-                            parentQ.Enqueue(subParent);
-                        continue;
-                    }
-                    nextStep.Add(parent);
-                }
-            }
-
-            step = nextStep.Distinct().Where(n => n.Name != "you").ToList();
-        }
+        Traverse(startNode, input, ref total);
 
         return total.ToString();
+    }
+
+    private void Traverse(Node node, List<Node> nodes, ref int total)
+    {
+        if (node.Outputs.Contains("out"))
+        {
+            total++;
+            return;
+        }
+        foreach (var output in node.Outputs)
+        {
+            var nextNode = nodes.FirstOrDefault(x => x.Name == output);
+            if (nextNode != null)
+            {
+                Traverse(nextNode, nodes, ref total);
+            }
+        }
     }
 
 
