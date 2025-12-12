@@ -7,8 +7,7 @@ repos:
           - --auto-add-tiles-to-git=amend
           - --theme=aoc
           - --animation=snow
-          - --create-all-days=True
-          - --auto-add-tiles-to-git=amend
+          - --create-all-days
           - --overwrite-year
           - --day-pattern="(?<!\d)([012]?\d)(?!\d)"
           - --exclude-patterns='*.txt'
