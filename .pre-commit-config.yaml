@@ -8,6 +8,6 @@ repos:
           - --theme=aoc
           - --animation=snow
           - --create-all-days
-          - --overwrite-year
+          - --overwrite-year=2025
           - --day-pattern="(?<!\d)([012]?\d)(?!\d)"
           - --exclude-patterns='*.txt'
