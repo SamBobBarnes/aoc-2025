@@ -1,6 +1,6 @@
 namespace AOC25.Day12;
 
-public class Part1() : BasePart(12,1,true)
+public class Part1() : BasePart(12,1)
 {
     public override string Run()
     {
@@ -30,7 +30,7 @@ public class Part1() : BasePart(12,1,true)
             }
         }
 
-        return 0.ToString();
+        return areas.Count.ToString();
     }
 
     private class Package
