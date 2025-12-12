@@ -10,5 +10,6 @@ repos:
           - --overwrite-year=2025
           - --exclude-patterns='*.txt'
           - --count-as-solved-when=on_leaderboard
-          - --verbosity=1
+          - --verbosity=2
           - --what-to-show-on-right-side=checkmark
+          - --language-sorting='csharp'
