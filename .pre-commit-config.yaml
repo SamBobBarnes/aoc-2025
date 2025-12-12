@@ -7,8 +7,8 @@ repos:
           - --auto-add-tiles-to-git=amend
           - --theme=aoc
           - --animation=snow
-          - --create-all-days
           - --overwrite-year=2025
           - --exclude-patterns='*.txt'
           - --count-as-solved-when=on_leaderboard
-          - --verbosity=2
+          - --verbosity=1
+          - --what-to-show-on-right-side=checkmark

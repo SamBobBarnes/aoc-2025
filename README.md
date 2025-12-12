@@ -38,43 +38,4 @@
 <a href="Day12/Part1.cs">
   <img src=".aoc_tiles/tiles/2025/12.gif" width="161px">
 </a>
-<a href="None">
-  <img src=".aoc_tiles/tiles/2025/13.gif" width="161px">
-</a>
-<a href="None">
-  <img src=".aoc_tiles/tiles/2025/14.gif" width="161px">
-</a>
-<a href="None">
-  <img src=".aoc_tiles/tiles/2025/15.gif" width="161px">
-</a>
-<a href="None">
-  <img src=".aoc_tiles/tiles/2025/16.gif" width="161px">
-</a>
-<a href="None">
-  <img src=".aoc_tiles/tiles/2025/17.gif" width="161px">
-</a>
-<a href="None">
-  <img src=".aoc_tiles/tiles/2025/18.gif" width="161px">
-</a>
-<a href="None">
-  <img src=".aoc_tiles/tiles/2025/19.gif" width="161px">
-</a>
-<a href="None">
-  <img src=".aoc_tiles/tiles/2025/20.gif" width="161px">
-</a>
-<a href="None">
-  <img src=".aoc_tiles/tiles/2025/21.gif" width="161px">
-</a>
-<a href="None">
-  <img src=".aoc_tiles/tiles/2025/22.gif" width="161px">
-</a>
-<a href="None">
-  <img src=".aoc_tiles/tiles/2025/23.gif" width="161px">
-</a>
-<a href="None">
-  <img src=".aoc_tiles/tiles/2025/24.gif" width="161px">
-</a>
-<a href="None">
-  <img src=".aoc_tiles/tiles/2025/25.gif" width="161px">
-</a>
 <!-- AOC TILES END -->
