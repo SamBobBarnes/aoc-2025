@@ -1,6 +1,6 @@
 <!-- AOC TILES BEGIN -->
 <h1 align="center">
-  2025 - 24 ⭐ - Smalltalk
+  2025 - 24 ⭐ - C#
 </h1>
 <a href="Day1/Part1.cs">
   <img src=".aoc_tiles/tiles/2025/01.gif" width="161px">
