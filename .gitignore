@@ -3,3 +3,5 @@ obj/
 .idea/
 *.user
 Outputs/
+.aoc_tiles/*
+!.aoc_tiles/tiles/
